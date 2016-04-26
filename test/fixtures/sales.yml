@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyString
+  sale_image_url: MyString
+  from_date: 2016-04-26
+  to_date: 2016-04-26
+  still_valid: false
+  supplier_id: 1
+
+two:
+  name: MyString
+  description: MyString
+  sale_image_url: MyString
+  from_date: 2016-04-26
+  to_date: 2016-04-26
+  still_valid: false
+  supplier_id: 1
