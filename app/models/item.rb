@@ -6,4 +6,5 @@ class Item < ActiveRecord::Base
 	has_many :item_images
 
 	validates :name, :supplier_id, :item_type_id, presence: true
+	accepts_nested_attributes_for :item_images
 end

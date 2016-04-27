@@ -1,0 +1,32 @@
+<%= form_for(@user, html: { class: 'directUpload', data: { 'form-data' => (@s3_direct_post.fields), 'url' =>
+@s3_direct_post.url, 'host' => URI.parse(@s3_direct_post.url).host } }) do |f| %>   
+
+	<% if @user.errors.any? %>     
+	  <div id="error_explanation">       
+	    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+	        <ul>
+	        <% @user.errors.full_messages.each do |message| %>
+	          <li><%= message %></li>
+	        <% end %>
+	        </ul>
+	      </div>
+	<% end %>
+
+	  <div class="field">
+	    <%= f.label :name %><br>
+	    <%= f.text_field :name %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :description %><br>
+	    <%= f.text_field :description %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :original_price %><br>
+	    <%= f.text_field :original_price %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :supplier %><br>
+	    <%= f.collection_select :supplier, Supplier.all, :name, selected: @item.supplier_id %>
+	  </div>
+
+<% end %>
