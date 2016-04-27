@@ -1,11 +1,11 @@
-<%= form_for(@user, html: { class: 'directUpload', data: { 'form-data' => (@s3_direct_post.fields), 'url' =>
+<%= form_for(@item, html: { class: 'directUpload', data: { 'form-data' => (@s3_direct_post.fields), 'url' =>
 @s3_direct_post.url, 'host' => URI.parse(@s3_direct_post.url).host } }) do |f| %>   
 
-	<% if @user.errors.any? %>     
+	<% if @item.errors.any? %>     
 	  <div id="error_explanation">       
-	    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+	    <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
 	        <ul>
-	        <% @user.errors.full_messages.each do |message| %>
+	        <% @item.errors.full_messages.each do |message| %>
 	          <li><%= message %></li>
 	        <% end %>
 	        </ul>
@@ -26,7 +26,11 @@
 	  </div>
 	  <div class="field">
 	    <%= f.label :supplier %><br>
-	    <%= f.collection_select :supplier, Supplier.all, :name, selected: @item.supplier_id %>
+	    <%= f.collection_select(:supplier_id, Supplier.all, :id, :name, prompt: true) %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :item_type %><br>
+	    <%= f.collection_select(:item_type_id, ItemType.all, :id, :name, prompt: true) %>
 	  </div>
 
 <% end %>
