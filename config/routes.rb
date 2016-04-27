@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :items, :suppliers, :sales
+  devise_for :users
+  resources :suppliers, :sales
+  resources :items do
+  	resources :item_images
+  end
 
   root "items#index"
 end
